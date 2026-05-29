@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meteo e Notizie</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar di Navigazione Sinistra -->
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <span class="sidebar__logo">🌍</span>
+        <h1 class="sidebar__title">Portal Italia</h1>
+      </div>
+      <nav class="sidebar__nav">
+        <button class="sidebar__link active" data-page="meteo" aria-current="page">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+          <span>Meteo</span>
+        </button>
+        <button class="sidebar__link" data-page="notizie">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1H9a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2"/>
+            <path d="M12 12h3M12 16h3M9 8h6"/>
+          </svg>
+          <span>Notizie</span>
+        </button>
+        <button class="sidebar__link" data-page="sport">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/>
+          </svg>
+          <span>Sport</span>
+        </button>
+        <button class="sidebar__link" data-page="borsa">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M7 14l3-3 4 4 6-8"/>
+          </svg>
+          <span>Borsa</span>
+        </button>
+        <button class="sidebar__link" data-page="test">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3h6"/>
+            <path d="M10 3v4l-5 9a4 4 0 0 0 3.5 6h7A4 4 0 0 0 19 16l-5-9V3"/>
+            <path d="M8 15h8"/>
+          </svg>
+          <span>Test</span>
+        </button>
+      </nav>
+      <footer class="sidebar__footer">
+        <p>© 2026 Portal Italia</p>
+      </footer>
+    </aside>
+
+    <!-- Area dei Contenuti Principali -->
+    <main class="main-content">
+      <!-- Sezione Meteo (Prima Pagina) -->
+      <section id="page-meteo" class="page-section active">
+        <h2 class="section-title">Meteo in Tempo Reale</h2>
+        <header class="header">
+          <div class="header__weather">
+            <div class="header__timer">
+              <div class="timer" role="timer" aria-live="polite" aria-label="Secondi al cambio delle 3 città casuali">
+                <svg class="timer__svg" viewBox="0 0 80 80">
+                  <circle class="timer__track" cx="40" cy="40" r="34" />
+                  <circle id="timer-ring" class="timer__ring" cx="40" cy="40" r="34" />
+                </svg>
+                <span id="timer-value" class="timer__value">10</span>
+              </div>
+            </div>
+            <ul id="cities" class="cities" aria-label="Temperature attuali"></ul>
+            <div class="italy-map-wrap" aria-hidden="true">
+              <svg id="italy-map" class="italy-map" viewBox="6.61 35.49 11.90 11.60">
+                <path id="italy-map-land" class="italy-map__land" />
+                <g id="map-markers"></g>
+              </svg>
+            </div>
+          </div>
+        </header>
+      </section>
+
+      <!-- Sezione Notizie (Seconda Pagina) -->
+      <section id="page-notizie" class="page-section">
+        <h2 class="section-title">Notizie Principali</h2>
+        <div class="columns">
+          <article class="column" id="repubblica">
+            <p class="source">Repubblica</p>
+            <a class="story" href="#" target="_blank" rel="noopener noreferrer">
+              <img class="story__img loading" alt="">
+              <h2 class="story__title">Caricamento…</h2>
+            </a>
+          </article>
+
+          <article class="column" id="open">
+            <p class="source">Open</p>
+            <a class="story" href="#" target="_blank" rel="noopener noreferrer">
+              <img class="story__img loading" alt="">
+              <h2 class="story__title">Caricamento…</h2>
+            </a>
+          </article>
+
+          <article class="column" id="corriere">
+            <p class="source">Corriere</p>
+            <a class="story" href="#" target="_blank" rel="noopener noreferrer">
+              <img class="story__img loading" alt="">
+              <h2 class="story__title">Caricamento…</h2>
+            </a>
+          </article>
+
+          <article class="column" id="messaggero">
+            <p class="source">Il Messaggero</p>
+            <a class="story" href="#" target="_blank" rel="noopener noreferrer">
+              <img class="story__img loading" alt="">
+              <h2 class="story__title">Caricamento…</h2>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section id="page-sport" class="page-section">
+        <h2 class="section-title">Sport</h2>
+        <div class="columns columns--3">
+          <article class="column" id="ubitennis">
+            <p class="source">Ubitennis</p>
+            <a class="story" href="#" target="_blank" rel="noopener noreferrer">
+              <img class="story__img loading" alt="">
+              <h2 class="story__title">Caricamento…</h2>
+            </a>
+          </article>
+
+          <article class="column" id="gazzetta">
+            <p class="source">Gazzetta</p>
+            <a class="story" href="#" target="_blank" rel="noopener noreferrer">
+              <img class="story__img loading" alt="">
+              <h2 class="story__title">Caricamento…</h2>
+            </a>
+          </article>
+
+          <article class="column" id="corrieredellosport">
+            <p class="source">Corriere dello Sport</p>
+            <a class="story" href="#" target="_blank" rel="noopener noreferrer">
+              <img class="story__img loading" alt="">
+              <h2 class="story__title">Caricamento…</h2>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section id="page-borsa" class="page-section">
+        <h2 class="section-title">Borsa</h2>
+        <div class="columns columns--2">
+          <article class="column" id="stock-avgo">
+            <p class="source">AVGO</p>
+            <div class="story stock">
+              <div class="stock__meta">
+                <p class="stock__price">Caricamento…</p>
+                <p class="stock__change"></p>
+              </div>
+              <div class="stock__chart" aria-hidden="true"></div>
+              <p class="stock__date"></p>
+            </div>
+          </article>
+
+          <article class="column" id="stock-msft">
+            <p class="source">Microsoft</p>
+            <div class="story stock">
+              <div class="stock__meta">
+                <p class="stock__price">Caricamento…</p>
+                <p class="stock__change"></p>
+              </div>
+              <div class="stock__chart" aria-hidden="true"></div>
+              <p class="stock__date"></p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="page-test" class="page-section">
+        <h2 class="section-title">Test</h2>
+        <div class="test-grid">
+          <div class="story test-card">
+            <p class="test-title">Borsa (Stooq)</p>
+            <div class="test-actions">
+              <button class="test-btn" id="test-stooq">Esegui test</button>
+            </div>
+            <pre class="test-output" id="test-stooq-out"></pre>
+          </div>
+
+          <div class="story test-card">
+            <p class="test-title">Borsa (Yahoo)</p>
+            <div class="test-actions">
+              <button class="test-btn" id="test-yahoo">Esegui test</button>
+            </div>
+            <pre class="test-output" id="test-yahoo-out"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="italy-map.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
